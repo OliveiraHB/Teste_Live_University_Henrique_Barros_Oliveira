@@ -1,0 +1,46 @@
+{
+    "elements": {
+        "div": {
+            "attributes": {
+                "id": {},
+                "class": {}
+            }
+        },
+        "br": {},
+        "a": {
+            "attributes": {
+                "onclick": {},
+                "href": {},
+                "class": {}
+            }
+        },
+        "input": {
+            "attributes": {
+                "onchange": {},
+                "id": {},
+                "type": {},
+                "value": {}
+            }
+        },
+        "select": {
+            "attributes": {
+                "onchange": {}
+            }
+        },
+        "light": {},
+        "ul": {},
+        "u2": {
+            "attributes": {
+                "style": {}
+            }
+        },
+        "li": {
+            "attributes": {
+                "class": {}
+            }
+        }
+    },
+    "attributes": {
+        "id": {}
+    }
+}

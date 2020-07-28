@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Teste_Henrique_Barros</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                jqueryFunction = function () {
+                    $("#drop").animate({left: "25%"});
+                };
+                jqueryFunction2 = function () {
+                    $("#drop").animate({left: "-25%"});
+                };
+            });
+        </script>
+        <style>
+            .container {
+            }
+
+            body {
+                margin: 0;
+            }
+            tr:hover {background-color: #f5f5f5;}
+
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                width: 25%;
+                background-color: #f1f1f1;
+                position: fixed;
+                height: 100%;
+                overflow: auto;
+                position:absolute;
+                top:0;
+                z-index: 2;
+            }
+            u2 {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                width: 25%;
+                background-color: #C1C1C1;
+                position: fixed;
+                height: 100%;
+                overflow: auto;
+                position:absolute;
+                z-index: 1;
+                top:0;
+
+            }
+
+            li a {
+                display: block;
+
+            }
+
+            li a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            li a:hover:not(.active) {
+                background-color: #555;
+                color: white;
+            }
+            .dropdown {
+                display: block;
+                text-decoration: none;
+            }
+
+            .dropdown a:hover:not(.active) {
+                background-color: #555;
+                color: white;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+            }
+
+            .dropdown-content a {
+                float: none;
+                color: black;
+                text-decoration: none;
+                display: block;
+                text-align: left;
+
+            }
+            .light {
+
+            }
+
+            .show {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <header style="height:100%">
+            <h1>
+                <ul>
+                    <li style="margin-top:25%" ><a  id='opt' onclick="option()" >Option</a></li>
+                    <div style="margin-top:25%" id='qt'>Quantity
+                        <br>
+                        <input min="1" step="1" type="number" id="value" value="<%= ini %>" onchange="num_function()">
+                    </div>
+                </ul>
+            </h1>
+        </header>
+        <main>
+            <h1>
+                <u2 id='drop' style="height:100%">
+                    <li class="dropdown">
+                        <a class="dropbtn" onclick="drop()">Dropdown</a>
+                        <div class="dropdown-content" id="Dropdown">
+                            <a onclick="drop_function('a')">A</a>
+                            <a onclick="drop_function('b')">B</a>
+                        </div>
+                    </li>
+                </u2>
+            </h1>
+            <div style="margin-left:25%;padding:1px 16px;height:100%;width:100%;" class="container">
+                <%- body %>
+            </div>
+        </main>
+
+        <footer>
+            EJS
+        </footer>
+        <script>
+            function drop() {
+                document.getElementById("Dropdown").classList.toggle("show");
+            }
+            ;
+            function option() {
+                jqueryFunction();
+            }
+            ;
+            function num_function() {
+                var value = document.getElementById("value").value;
+                value = parseInt(value);
+                if (Number.isInteger(value)) {
+                    value = "/number/" + value;
+                    location.href = value;
+                }
+
+                ;
+            }
+            ;
+
+            function drop_function(drop) {
+                var value = document.getElementById("value").value;
+                value = parseInt(value);
+                if (Number.isInteger(value)) {
+                    var loc = "/ab/" + drop;
+                    location.href = loc;
+                } else {
+                    document.getElementById("qt").style.color = "red";
+                }
+                ;
+            }
+            ;
+            var isDrop = document.getElementById('drop');
+            var isOpt = document.getElementById('opt');
+            document.addEventListener('click', function (event) {
+                var inside = isDrop.contains(event.target);
+                var opt = isOpt.contains(event.target);
+                if (!inside && !opt) {
+                    jqueryFunction2();
+                }
+                ;
+            });
+        </script>
+    </body>
+</html>  
